@@ -1,0 +1,147 @@
+.container{
+    width: 100%;
+    height: 100vh;
+    border: 1px solid black;
+    font-family: sans-serif;
+}
+.namma-kumta{
+    width: 100%;
+    max-width: none;
+    display: flex;
+    margin-right: 100px;
+    border: 1px solid #e0e0e0;
+    box-shadow: 1px 1px 1px #e0e0e0;
+}
+.namma-kumta img{
+    width: 100%;
+    max-width: 70px;
+    height: 70px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    margin-left: 20px;
+    border-radius: 70px;
+}
+.type{
+    font-size: 30px;
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    cursor: text;
+}
+.i{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-left: auto;
+}
+.bell{
+    font-size: 40px;
+    padding-right: 15px;
+    cursor: pointer;
+}
+.user{
+    font-size: 40px;
+    cursor: pointer;
+    padding-right: 15px;
+}
+.global{
+    font-size: 40px;
+    cursor: pointer;
+    padding-right: 15px;
+}
+
+
+.search{
+    width: 100%;
+    max-width: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.search1{
+    margin-top: 10px;
+    width: 100%;
+    margin-bottom: 10px;
+    max-width: 1000px;
+    padding-top: 15px;
+    padding-bottom: 10px;
+    border: 1px solid black;
+    border-radius: 10px ;
+    display: flex;
+    box-shadow: 2px 2px 2px #e0e0e0;
+    cursor: text
+}
+.search-i{
+    font-size: 30px;
+    display: flex;
+    align-items: center;
+    padding-left: 15px;
+    cursor:context-menu;
+}
+.here{
+    font-size: 23px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    padding-left: 35px;
+}
+.voice{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-left: auto;
+    font-size: 30px;
+    cursor:pointer;
+    padding-right: 15px;
+}
+
+
+.images{
+    width: 100%;
+    max-width: none;
+    display: flex;
+    justify-content: center;
+    height: 760px;
+    border: 1px solid rgb(0, 255, 0);
+}
+.images1{
+    width: 100%;
+    max-width: 1700px;
+    border: 1px solid black;
+}
+
+
+
+
+
+.icons{
+    width: 100%;
+    max-width: none;
+}
+.icons1{
+    width: 100%;
+    max-width: none;
+    height: 105px;
+    border: 1px solid #e0e0e0;
+    display: flex;
+}
+.home{
+    width: 100%;
+    max-width: 556px;
+    border: 1px solid black;
+}
+.search11{
+    width: 100%;
+    max-width: 556px;
+    border: 1px solid black;
+}
+.add{
+    width: 100%;
+    max-width: 556px;
+    border: 1px solid black;
+}
+.alert{
+    width: 100%;
+    max-width: 556px;
+    border: 1px solid black;
+}
