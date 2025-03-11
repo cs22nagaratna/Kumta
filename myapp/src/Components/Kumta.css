@@ -14,10 +14,10 @@
 }
 .namma-kumta img{
     width: 100%;
-    max-width: 70px;
-    height: 70px;
-    margin-top: 15px;
-    margin-bottom: 15px;
+    max-width: 100px;
+    height: 100px;
+    margin-top: 10px;
+    margin-bottom: 10px;
     margin-left: 20px;
     border-radius: 70px;
 }
@@ -127,8 +127,18 @@
 }
 .home{
     width: 100%;
+    display: flex;
     max-width: 556px;
     border: 1px solid black;
+}
+.h-i{
+    align-items: center;
+    display: flex;
+    justify-content: center;
+
+}
+.h-na{
+    font-size: 15px;
 }
 .search11{
     width: 100%;

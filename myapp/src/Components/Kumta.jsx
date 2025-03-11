@@ -14,7 +14,7 @@ const Kumta = () => {
     return(
         <div className="container">
             <div className="namma-kumta">
-                <img src="https://www.shutterstock.com/shutterstock/photos/2463989253/display_1500/stock-vector-tropical-sunset-serenity-summer-background-vector-illustration-2463989253.jpg" alt="logo" />
+                <img src="https://png.pngtree.com/png-vector/20240822/ourmid/pngtree-beach-logo-design-inspiration-sunset-coconut-trees-palms-on-the-vector-png-image_13564239.png" alt="logo" />
                 <div className="type">Namma Kumata</div>
                 <div className="i">
                     <div className="bell"><AiOutlineBell /></div>
@@ -34,7 +34,10 @@ const Kumta = () => {
             </div>
             <div className="icons">
                 <div className="icons1">
-                    <div className="home"><FiHome/></div>
+                    <div className="home">
+                        <div className="h-i"><FiHome/></div>
+                        <div className="h-na">Home</div>
+                    </div>
                     <div className="search11"><IoSearch/></div>
                     <div className="add"><IoIosAddCircleOutline /></div>
                     <div className="alert"><BiBulb/></div>
