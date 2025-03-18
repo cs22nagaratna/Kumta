@@ -1,0 +1,111 @@
+import React from "react";
+import "./Home.css"
+
+const Home=()=>{
+    return(
+        <div className="con">
+            <div className="lo1">dnijcijc</div>
+            <div className="hello">
+                Detailed Overview of Phase 2: Project Development for the nammaKumta Web Application
+
+
+System Architecture
+The system architecture of nammaKumta.com follows a classic web application model with a clear separation between the client side (front-end) and server side (back-end). This architecture ensures that each component of the system can be developed and maintained independently, while all parts work together to deliver the desired functionality.
+Figure: High-level architecture of the nammaKumta.com platform. The React front-end (Client) runs in the user’s web browser and interacts with the Node.js/Express back-end (Server) through HTTP API requests. The Node.js server processes these requests, performing Create/Read/Update/Delete (CRUD) operations on the MongoDB database as needed (e.g., fetching a list of contacts or adding a new listing). The server may also interact with external APIs or services in the future (for example, for sending email notifications or integrating maps), depicted by the “APIs/Other Resources” cloud. Responses are sent back from the server to the client, upon which the React front-end updates the user interface accordingly. This client-server-db design ensures a responsive user experience and a scalable backend
+
+Deployment and Hosting
+Deploying nammaKumta.com in a reliable and secure manner was a crucial part of the project. The platform is hosted on a DigitalOcean Droplet, which is essentially a virtual private server (VPS) running Linux (Ubuntu). Here’s an overview of the deployment and hosting setup, including the measures taken for security and backups:
+Server Setup on DigitalOcean: We created an Ubuntu 20.04 LTS Droplet on DigitalOcean with adequate resources (CPU, RAM, and storage) to run a Node.js and MongoDB based application. The choice of DigitalOcean provides us full control over the environment. On this server, we installed Node.js runtime and MongoDB database. The React front-end was built into static files and is served by Nginx on the same server. The domain nammakumta.com is pointed to this server’s IP address. We configured DNS settings so that when users go to the website URL, they reach our server.
+
+
+Deployment Process: For deploying new versions of the application, we set up a simple workflow. The code is managed in a Git repository. Upon finalizing a set of changes, we push code to the main branch. On the server, we pull the latest code from Git and then perform the build steps. The front-end (npm run build for the React app) generates an optimized production build in a directory (for example, a build folder with HTML, JS, CSS files). These static files are placed in Nginx’s web directory so that Nginx can serve the HTML/JS/CSS directly to users. The back-end Node.js application is restarted with the new code (we use the PM2 process manager, which loads the updated server code and keeps the process running in the background). This approach means minimal downtime – typically just a few seconds during the Node app restart – and ensures the site updates are live quickly. We have also tested deploying via Docker containers for both front-end and back-end for consistency, but currently a simple VPS setup suffices for our scale.
+
+
+Security Measures: Security is paramount since the site is publicly accessible. Several measures are in place:
+
+
+Firewall: We configured the Ubuntu firewall (ufw) to allow only necessary ports – e.g., port 80 (HTTP) and 443 (HTTPS) for web traffic, and blocked all other unused ports. SSH access for server management is restricted and uses key-based authentication to prevent unauthorized logins.
+SSL Encryption: We obtained and installed an SSL certificate (via Let’s Encrypt) for nammakumta.com. This means users access the site over HTTPS, and all data transferred between the server and users (queries, results, contact details) is encrypted. This protects against eavesdropping, especially important if users are on public Wi-Fi or if any sensitive information were to be transmitted.
+Server Hardening: Default passwords were changed and unnecessary software packages were removed from the server to reduce vulnerabilities. We keep the server’s system and software updated with security patches. The Node.js app is run under a non-root user account, and Nginx is configured to drop privileges, which limits the impact of any potential exploit.
+Database Security: The MongoDB database is configured to require authentication (username/password) and is firewalled to local connections only (only the application server can talk to the database, it’s not open to the internet). This prevents any direct malicious access to the database. Additionally, we plan to implement data validation at the application level to sanitize any input (even though currently general public input is limited, this becomes important when features like user contributions or reviews are added, to prevent injection attacks).
+Backups and Redundancy: To ensure reliability, we have a backup strategy in place. The MongoDB database is backed up regularly. We perform nightly dumps of the database (exporting all listings and data) and store backups securely (encrypted) on a cloud storage service. In case of any data corruption or loss, we can restore from these backups quickly. For the application code, since it’s version-controlled in Git, we can redeploy code from the repository at any time, which acts as a backup of the application itself. We also keep backups of important configuration files (like Nginx config, SSL certificates) off-server. In the future, for higher uptime, we might consider having a secondary server or using DigitalOcean’s backup snapshots feature to recover the entire droplet if needed.
+
+
+Monitoring and Maintenance: We utilize basic monitoring to keep track of the server’s health. This includes uptime monitoring (alerting us if the site goes down unexpectedly) and resource monitoring (so we know if we’re running out of memory or disk space). Tools like pm2 also provide logs of application errors; we review these logs to fix issues proactively. Regular maintenance tasks include updating system packages, renewing SSL certificates every few months, and optimizing the database (for example, indexing new fields, archiving old logs, etc.).
+
+
+By hosting on DigitalOcean and setting up these deployment and security measures, we ensure that nammaKumta.com is not only functional but also reliable and safe for users. The deployment setup is documented so that team members can easily perform updates or recovery if the primary maintainer is unavailable. Overall, this approach provides a solid infrastructure backbone for the project, balancing performance (fast responses and uptime) with security and maintainability.
+
+Conclusion
+In conclusion, nammaKumta.com has emerged as a valuable digital resource that positively impacts the Kumta community. In this project, we identified a clear need – the difficulty in finding accurate, up-to-date contact information for local services – and addressed it through a modern, easy-to-use platform. Over the span of a few months, the project went from concept to reality, resulting in a directory that hundreds of residents and visitors can rely on for their everyday information needs.
+Detailed Overview of Phase 2: Project Development for the nammaKumta Web Application
+
+
+ System Architecture
+The system architecture of nammaKumta.com follows a classic web application model with a clear separation between the client side (front-end) and server side (back-end). This architecture ensures that each component of the system can be developed and maintained independently, while all parts work together to deliver the desired functionality.
+Figure: High-level architecture of the nammaKumta.com platform. The React front-end (Client) runs in the user’s web browser and interacts with the Node.js/Express back-end (Server) through HTTP API requests. The Node.js server processes these requests, performing Create/Read/Update/Delete (CRUD) operations on the MongoDB database as needed (e.g., fetching a list of contacts or adding a new listing). The server may also interact with external APIs or services in the future (for example, for sending email notifications or integrating maps), depicted by the “APIs/Other Resources” cloud. Responses are sent back from the server to the client, upon which the React front-end updates the user interface accordingly. This client-server-db design ensures a responsive user experience and a scalable backend
+
+Deployment and Hosting
+Deploying nammaKumta.com in a reliable and secure manner was a crucial part of the project. The platform is hosted on a DigitalOcean Droplet, which is essentially a virtual private server (VPS) running Linux (Ubuntu). Here’s an overview of the deployment and hosting setup, including the measures taken for security and backups:
+Server Setup on DigitalOcean: We created an Ubuntu 20.04 LTS Droplet on DigitalOcean with adequate resources (CPU, RAM, and storage) to run a Node.js and MongoDB based application. The choice of DigitalOcean provides us full control over the environment. On this server, we installed Node.js runtime and MongoDB database. The React front-end was built into static files and is served by Nginx on the same server. The domain nammakumta.com is pointed to this server’s IP address. We configured DNS settings so that when users go to the website URL, they reach our server.
+
+
+Deployment Process: For deploying new versions of the application, we set up a simple workflow. The code is managed in a Git repository. Upon finalizing a set of changes, we push code to the main branch. On the server, we pull the latest code from Git and then perform the build steps. The front-end (npm run build for the React app) generates an optimized production build in a directory (for example, a build folder with HTML, JS, CSS files). These static files are placed in Nginx’s web directory so that Nginx can serve the HTML/JS/CSS directly to users. The back-end Node.js application is restarted with the new code (we use the PM2 process manager, which loads the updated server code and keeps the process running in the background). This approach means minimal downtime – typically just a few seconds during the Node app restart – and ensures the site updates are live quickly. We have also tested deploying via Docker containers for both front-end and back-end for consistency, but currently a simple VPS setup suffices for our scale.
+
+
+Security Measures: Security is paramount since the site is publicly accessible. Several measures are in place:
+
+
+Firewall: We configured the Ubuntu firewall (ufw) to allow only necessary ports – e.g., port 80 (HTTP) and 443 (HTTPS) for web traffic, and blocked all other unused ports. SSH access for server management is restricted and uses key-based authentication to prevent unauthorized logins.
+SSL Encryption: We obtained and installed an SSL certificate (via Let’s Encrypt) for nammakumta.com. This means users access the site over HTTPS, and all data transferred between the server and users (queries, results, contact details) is encrypted. This protects against eavesdropping, especially important if users are on public Wi-Fi or if any sensitive information were to be transmitted.
+Server Hardening: Default passwords were changed and unnecessary software packages were removed from the server to reduce vulnerabilities. We keep the server’s system and software updated with security patches. The Node.js app is run under a non-root user account, and Nginx is configured to drop privileges, which limits the impact of any potential exploit.
+Database Security: The MongoDB database is configured to require authentication (username/password) and is firewalled to local connections only (only the application server can talk to the database, it’s not open to the internet). This prevents any direct malicious access to the database. Additionally, we plan to implement data validation at the application level to sanitize any input (even though currently general public input is limited, this becomes important when features like user contributions or reviews are added, to prevent injection attacks).
+Backups and Redundancy: To ensure reliability, we have a backup strategy in place. The MongoDB database is backed up regularly. We perform nightly dumps of the database (exporting all listings and data) and store backups securely (encrypted) on a cloud storage service. In case of any data corruption or loss, we can restore from these backups quickly. For the application code, since it’s version-controlled in Git, we can redeploy code from the repository at any time, which acts as a backup of the application itself. We also keep backups of important configuration files (like Nginx config, SSL certificates) off-server. In the future, for higher uptime, we might consider having a secondary server or using DigitalOcean’s backup snapshots feature to recover the entire droplet if needed.
+
+
+Monitoring and Maintenance: We utilize basic monitoring to keep track of the server’s health. This includes uptime monitoring (alerting us if the site goes down unexpectedly) and resource monitoring (so we know if we’re running out of memory or disk space). Tools like pm2 also provide logs of application errors; we review these logs to fix issues proactively. Regular maintenance tasks include updating system packages, renewing SSL certificates every few months, and optimizing the database (for example, indexing new fields, archiving old logs, etc.).
+
+
+By hosting on DigitalOcean and setting up these deployment and security measures, we ensure that nammaKumta.com is not only functional but also reliable and safe for users. The deployment setup is documented so that team members can easily perform updates or recovery if the primary maintainer is unavailable. Overall, this approach provides a solid infrastructure backbone for the project, balancing performance (fast responses and uptime) with security and maintainability.
+
+Conclusion
+In conclusion, nammaKumta.com has emerged as a valuable digital resource that positively impacts the Kumta community. In this project, we identified a clear need – the difficulty in finding accurate, up-to-date contact information for local services – and addressed it through a modern, easy-to-use platform. Over the span of a few months, the project went from concept to reality, resulting in a directory that hundreds of residents and visitors can rely on for their everyday information needs.
+Detailed Overview of Phase 2: Project Development for the nammaKumta Web Application
+
+
+ System Architecture
+The system architecture of nammaKumta.com follows a classic web application model with a clear separation between the client side (front-end) and server side (back-end). This architecture ensures that each component of the system can be developed and maintained independently, while all parts work together to deliver the desired functionality.
+Figure: High-level architecture of the nammaKumta.com platform. The React front-end (Client) runs in the user’s web browser and interacts with the Node.js/Express back-end (Server) through HTTP API requests. The Node.js server processes these requests, performing Create/Read/Update/Delete (CRUD) operations on the MongoDB database as needed (e.g., fetching a list of contacts or adding a new listing). The server may also interact with external APIs or services in the future (for example, for sending email notifications or integrating maps), depicted by the “APIs/Other Resources” cloud. Responses are sent back from the server to the client, upon which the React front-end updates the user interface accordingly. This client-server-db design ensures a responsive user experience and a scalable backend
+
+Deployment and Hosting
+Deploying nammaKumta.com in a reliable and secure manner was a crucial part of the project. The platform is hosted on a DigitalOcean Droplet, which is essentially a virtual private server (VPS) running Linux (Ubuntu). Here’s an overview of the deployment and hosting setup, including the measures taken for security and backups:
+Server Setup on DigitalOcean: We created an Ubuntu 20.04 LTS Droplet on DigitalOcean with adequate resources (CPU, RAM, and storage) to run a Node.js and MongoDB based application. The choice of DigitalOcean provides us full control over the environment. On this server, we installed Node.js runtime and MongoDB database. The React front-end was built into static files and is served by Nginx on the same server. The domain nammakumta.com is pointed to this server’s IP address. We configured DNS settings so that when users go to the website URL, they reach our server.
+
+
+Deployment Process: For deploying new versions of the application, we set up a simple workflow. The code is managed in a Git repository. Upon finalizing a set of changes, we push code to the main branch. On the server, we pull the latest code from Git and then perform the build steps. The front-end (npm run build for the React app) generates an optimized production build in a directory (for example, a build folder with HTML, JS, CSS files). These static files are placed in Nginx’s web directory so that Nginx can serve the HTML/JS/CSS directly to users. The back-end Node.js application is restarted with the new code (we use the PM2 process manager, which loads the updated server code and keeps the process running in the background). This approach means minimal downtime – typically just a few seconds during the Node app restart – and ensures the site updates are live quickly. We have also tested deploying via Docker containers for both front-end and back-end for consistency, but currently a simple VPS setup suffices for our scale.
+
+
+Security Measures: Security is paramount since the site is publicly accessible. Several measures are in place:
+
+
+Firewall: We configured the Ubuntu firewall (ufw) to allow only necessary ports – e.g., port 80 (HTTP) and 443 (HTTPS) for web traffic, and blocked all other unused ports. SSH access for server management is restricted and uses key-based authentication to prevent unauthorized logins.
+SSL Encryption: We obtained and installed an SSL certificate (via Let’s Encrypt) for nammakumta.com. This means users access the site over HTTPS, and all data transferred between the server and users (queries, results, contact details) is encrypted. This protects against eavesdropping, especially important if users are on public Wi-Fi or if any sensitive information were to be transmitted.
+Server Hardening: Default passwords were changed and unnecessary software packages were removed from the server to reduce vulnerabilities. We keep the server’s system and software updated with security patches. The Node.js app is run under a non-root user account, and Nginx is configured to drop privileges, which limits the impact of any potential exploit.
+Database Security: The MongoDB database is configured to require authentication (username/password) and is firewalled to local connections only (only the application server can talk to the database, it’s not open to the internet). This prevents any direct malicious access to the database. Additionally, we plan to implement data validation at the application level to sanitize any input (even though currently general public input is limited, this becomes important when features like user contributions or reviews are added, to prevent injection attacks).
+Backups and Redundancy: To ensure reliability, we have a backup strategy in place. The MongoDB database is backed up regularly. We perform nightly dumps of the database (exporting all listings and data) and store backups securely (encrypted) on a cloud storage service. In case of any data corruption or loss, we can restore from these backups quickly. For the application code, since it’s version-controlled in Git, we can redeploy code from the repository at any time, which acts as a backup of the application itself. We also keep backups of important configuration files (like Nginx config, SSL certificates) off-server. In the future, for higher uptime, we might consider having a secondary server or using DigitalOcean’s backup snapshots feature to recover the entire droplet if needed.
+
+
+Monitoring and Maintenance: We utilize basic monitoring to keep track of the server’s health. This includes uptime monitoring (alerting us if the site goes down unexpectedly) and resource monitoring (so we know if we’re running out of memory or disk space). Tools like pm2 also provide logs of application errors; we review these logs to fix issues proactively. Regular maintenance tasks include updating system packages, renewing SSL certificates every few months, and optimizing the database (for example, indexing new fields, archiving old logs, etc.).
+
+
+By hosting on DigitalOcean and setting up these deployment and security measures, we ensure that nammaKumta.com is not only functional but also reliable and safe for users. The deployment setup is documented so that team members can easily perform updates or recovery if the primary maintainer is unavailable. Overall, this approach provides a solid infrastructure backbone for the project, balancing performance (fast responses and uptime) with security and maintainability.
+
+Conclusion
+In conclusion, nammaKumta.com has emerged as a valuable digital resource that positively impacts the Kumta community. In this project, we identified a clear need – the difficulty in finding accurate, up-to-date contact information for local services – and addressed it through a modern, easy-to-use platform. Over the span of a few months, the project went from concept to reality, resulting in a directory that hundreds of residents and visitors can rely on for their everyday information needs.
+
+            </div>
+            <div className="lo"></div>
+        </div>
+    )
+}
+export default Home

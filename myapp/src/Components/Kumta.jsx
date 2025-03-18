@@ -36,7 +36,6 @@ const Kumta = () => {
                     <div className="images1">
                         <div className="row1">
                             <div className="hospital">
-                                {/* <button onClick={linkTo("Components/HomePage")}></button> */}
                                 <img src="https://cbin.b-cdn.net/img/GO/Government-of-India01_9CFDJ_800x582.jpeg"/>
                                 <div className="text">Hospital</div>
                                 
